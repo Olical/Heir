@@ -84,13 +84,27 @@
      * Inherits other functions prototype objects into the current function.
      *
      * @param {Function|Function[]} parent A function which should have it's prototype cloned and placed into the current functions prototype. If you pass an array of functions they will all be inherited from.
-     * @param {Function} [fn] Optional function to use as the current function which is inheriting the other prototypes. It will default to `this`.
+     * @param {Function} [forceFn] Optional function to use as the current function which is inheriting the other prototypes. It will default to `this`.
      * @return {Function} The current function to allow chaining.
      */
-    function inherit(parent, fn) {
-        // Set fn to this if it was not passed
-        if(!fn) {
-            fn = this;
+    function inherit(parent, forceFn) {
+        // Initialise variables
+        var fn = forceFn || this
+          , i;
+
+        // If the parent variable is not a function then it must be an array
+        // So we have to loop over it and inherit each of them
+        // Remember to pass the current function instance!
+        if(typeof parent !== 'function') {
+            i = parent.length;
+            while(i--) {
+                inherit(parent[i], fn);
+            }
+        }
+        else {
+            // It is not an array, it is a plain function
+            // Merge it's prototype into this one
+            merge(fn.prototype, clone(parent.prototype));
         }
 
         // Return the current function to allow chaining
