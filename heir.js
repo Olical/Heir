@@ -18,7 +18,8 @@
      * @return {Function} The current function to allow chaining.
      */
     function inherit(parent) {
-
+        // Return the current function to allow chaining
+        return this;
     }
 
     // Expose the function by placing it in the Function prototype
