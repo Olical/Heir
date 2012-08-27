@@ -69,11 +69,17 @@
      * Inherits other functions prototype objects into the current function.
      *
      * @param {Function|Function[]} parent A function which should have it's prototype cloned and placed into the current functions prototype. If you pass an array of functions they will all be inherited from.
+     * @param {Function} [fn] Optional function to use as the current function which is inheriting the other prototypes. It will default to `this`.
      * @return {Function} The current function to allow chaining.
      */
-    function inherit(parent) {
+    function inherit(parent, fn) {
+        // Set fn to this if it was not passed
+        if(!fn) {
+            fn = this;
+        }
+
         // Return the current function to allow chaining
-        return this;
+        return fn;
     }
 
     // Expose the inherit function by placing it in the Function prototype
