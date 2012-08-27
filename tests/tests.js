@@ -205,6 +205,36 @@ describe('heir.inherit', function() {
         expect(s.bar()).toEqual('!bar!');
         expect(s.baz()).toEqual('!baz!');
     });
+
+    it('does not have to be called through the prototype', function() {
+        var Base = function(){};
+        Base.prototype.foo = function() {
+            return '!foo!';
+        };
+
+        var Base2 = function(){};
+        Base2.prototype.baz = function() {
+            return '!baz!';
+        };
+
+        var Sub = function(){};
+        heir.inherit([Base, Base2], Sub);
+        Sub.prototype.bar = function() {
+            return '!bar!';
+        };
+
+        var b = new Base();
+        var b2 = new Base2();
+        var s = new Sub();
+
+        expect(b.bar).not.toBeDefined();
+        expect(b2.bar).not.toBeDefined();
+        expect(b.foo()).toEqual('!foo!');
+        expect(b2.baz()).toEqual('!baz!');
+        expect(s.foo()).toEqual('!foo!');
+        expect(s.bar()).toEqual('!bar!');
+        expect(s.baz()).toEqual('!baz!');
+    });
 });
 
 // Run Jasmine
