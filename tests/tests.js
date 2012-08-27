@@ -11,7 +11,7 @@ jasmineEnv.specFilter = function(spec) {
 };
 
 // Configure the tests
-describe('isObject', function() {
+describe('heir.isObject', function() {
     it('returns true on objects', function() {
         expect(heir.isObject({})).toBe(true);
         var test = {};
