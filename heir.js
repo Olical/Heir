@@ -13,13 +13,36 @@
     'use strict';
 
     /**
-     * Works out if a variable is a true object (created with {} etc) and not an array or anything else that usually shows up as an object.
+     * Works out the real type of a variable.
      *
-     * @param {Mixed} chk The variable to check to see if it is an object. It must be a pure object, not even a prototype.
-     * @return {Boolean} True if it is a true object, false if it is anything else.
+     * @param {Mixed} item The variable to get the type of.
+     * @return {String} The type of the variable you passed.
      */
-    function isObject(chk) {
-        return (chk && typeof chk === 'object' && Object.prototype.toString.call(chk) !== '[object Array]') === true;
+    function type(item) {
+        // Get the base type using the native method
+        var itemType = typeof item;
+
+        // If native says it is an object, it probably isn't
+        // Let's work out what it actually is
+        if(itemType === 'object') {
+            // First check if truthy
+            if(item) {
+                // Check if it is an array
+                // This may seem dirty but it also picks up array like objects
+                // So things like NodeLists will count as arrays
+                if(typeof item.length === 'number') {
+                    return 'array';
+                }
+            }
+            else {
+                // It is a falsy object, therefore it is null
+                return 'null';
+            }
+        }
+
+        // Return the native type
+        // This happens if nothing above matched and returned
+        return itemType;
     }
 
     /**
@@ -38,7 +61,7 @@
             // Make sure the value is not in __proto__ or something like that
             if(b.hasOwnProperty(key)) {
                 // If they are both objects then merge recursively
-                if(isObject(a[key]) && isObject(b[key])) {
+                if(type(a[key]) === 'object' && type(b[key]) === 'object') {
                     merge(a[key], b[key]);
                 }
 
@@ -87,7 +110,7 @@
 
     // Create a nice little namespace to expose
     var ns = {
-        isObject: isObject,
+        type: type,
         merge: merge,
         clone: clone,
         inherit: inherit
