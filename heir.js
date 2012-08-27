@@ -62,7 +62,7 @@
      * @return {Array|Object} The cloned version of orig that can be edited without changing the original.
      */
     function clone(orig) {
-        
+
     }
 
     /**
@@ -81,10 +81,10 @@
 
     // Create a nice little namespace to expose
     var ns = {
+        isObject: isObject,
         merge: merge,
-        inherit: inherit,
         clone: clone,
-        isObject: isObject
+        inherit: inherit
     };
 
     // And expose everything else either via AMD or a global object
