@@ -87,5 +87,64 @@ describe('heir.merge', function() {
     });
 });
 
+describe('heir.clone', function() {
+    it('clones objects', function() {
+        var orig = {
+            foo: true,
+            bar: false
+        };
+
+        var cl = heir.clone(orig);
+
+        cl.bar = true;
+
+        expect(orig).toEqual({
+            foo: true,
+            bar: false
+        });
+
+        expect(cl).toEqual({
+            foo: true,
+            bar: true
+        });
+    });
+
+    it('clones objects recursively', function() {
+        var orig = {
+            foo: true,
+            bar: false,
+            baz: {
+                one: 100,
+                two: 300
+            }
+        };
+
+        var cl = heir.clone(orig);
+
+        cl.bar = true;
+        cl.baz.two = 200;
+        cl.baz.three = 300;
+
+        expect(orig).toEqual({
+            foo: true,
+            bar: false,
+            baz: {
+                one: 100,
+                two: 300
+            }
+        });
+
+        expect(cl).toEqual({
+            foo: true,
+            bar: true,
+            baz: {
+                one: 100,
+                two: 200,
+                three: 300
+            }
+        });
+    });
+});
+
 // Run Jasmine
 jasmineEnv.execute();
