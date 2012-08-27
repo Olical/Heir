@@ -53,8 +53,16 @@
         return a;
     }
 
-    function clone() {
-
+    /**
+     * Returns a recursive clone of the passed object or array.
+     * So when you edit the original the clone will not change.
+     * Used in prototypical inheritance.
+     *
+     * @param {Array|Object} orig The original array or object to clone.
+     * @return {Array|Object} The cloned version of orig that can be edited without changing the original.
+     */
+    function clone(orig) {
+        
     }
 
     /**
