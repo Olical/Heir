@@ -36,15 +36,14 @@
         for(var key in b) {
             // Make sure the value is not in __proto__ or something like that
             if(b.hasOwnProperty(key)) {
-                // Now if a does not have it, just replace it
-                if(!a.hasOwnProperty(key)) {
-                    a[key] = b[key];
+                // If they are both objects then merge recursively
+                if(isObject(a[key]) && isObject(b[key])) {
+                    merge(a[key], b[key]);
                 }
 
-                // So the base value does exist
-                // If they are both objects then merge recursively
-                else if(isObject(a[key]) && isObject(b[key])) {
-                    merge(a[key], b[key]);
+                // Otherwise just replace the base value
+                else {
+                    a[key] = b[key];
                 }
             }
         }
