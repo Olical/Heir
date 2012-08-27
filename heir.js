@@ -4,10 +4,22 @@
  * MIT license
  */
 
-Function.prototype.inherits = function() {
+;(function() {
     // JSHint config - http://www.jshint.com/
     /*jshint laxcomma:true*/
 
-    // Place the function into strict mode
+    // Place the script into strict mode
     'use strict';
-};
+
+    /**
+     * Inherits other functions prototype objects into the current function.
+     *
+     * @param {Function|Function[]} parent A function which should have it's prototype cloned and placed into the current functions prototype. If you pass an array of functions they will all be inherited from.
+     */
+    function inherit(parent) {
+
+    }
+
+    // Expose the function by placing it in the Function prototype
+    Function.prototype.inherit = inherit;
+}());
