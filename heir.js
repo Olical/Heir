@@ -19,7 +19,7 @@
      * @return {Boolean} True if it is a true object, false if it is anything else.
      */
     function isObject(chk) {
-        return (chk && typeof chk === 'object' && Object.prototype.toString.call(chk) !== '[object Array]') === true;
+        return Object.prototype.toString.call(chk) === '[object Object]';
     }
 
     /**

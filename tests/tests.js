@@ -18,10 +18,10 @@ describe('heir.isObject', function() {
         expect(heir.isObject(test)).toBe(true);
     });
 
-    it('returns true on a regex', function() {
-        expect(heir.isObject(/reg[ex]/i)).toBe(true);
+    it('returns false on a regex', function() {
+        expect(heir.isObject(/reg[ex]/i)).toBe(false);
         var test = /reg[ex]/i;
-        expect(heir.isObject(test)).toBe(true);
+        expect(heir.isObject(test)).toBe(false);
     });
 
     it('returns false on arrays', function() {
