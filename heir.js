@@ -25,6 +25,7 @@
     /**
      * Recursively merges two objects. Object `a` will be overridden by the values in object `b`.
      * Please run the values through a cloning function first, this function does not try to clone them for you.
+     * The base object will be edited directly, please be careful!
      *
      * @param {Object} a The base object to merge into.
      * @param {Object} b The object to merge down into object `a`.
