@@ -6,15 +6,15 @@ Due to there not being any documentation yet, you may want to read my JSDoc comm
 
     // Create the base class
     var Base = function(){};
-
+    
     // Add a method
     Base.prototype.foo = function() {
         retrun '!foo!';
     };
-
+    
     // Create a sub class which inherits from base
     var Sub = function(){}.inherit(Base);
-
+    
     // Create an instance of Sub and call it's method
     var s = new Sub();
     s.foo(); // Returns "!foo!"
