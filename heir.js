@@ -13,36 +13,13 @@
     'use strict';
 
     /**
-     * Works out the real type of a variable.
+     * Works out if a variable is a true object (created with {} etc) and not an array or anything else that usually shows up as an object.
      *
-     * @param {Mixed} item The variable to get the type of.
-     * @return {String} The type of the variable you passed.
+     * @param {Mixed} chk The variable to check to see if it is an object. It must be a pure object, not even a prototype.
+     * @return {Boolean} True if it is a true object, false if it is anything else.
      */
-    function type(item) {
-        // Get the base type using the native method
-        var itemType = typeof item;
-
-        // If native says it is an object, it probably isn't
-        // Let's work out what it actually is
-        if(itemType === 'object') {
-            // First check if truthy
-            if(item) {
-                // Check if it is an array
-                // This may seem dirty but it also picks up array like objects
-                // So things like NodeLists will count as arrays
-                if(typeof item.length === 'number') {
-                    return 'array';
-                }
-            }
-            else {
-                // It is a falsy object, therefore it is null
-                return 'null';
-            }
-        }
-
-        // Return the native type
-        // This happens if nothing above matched and returned
-        return itemType;
+    function isObject(chk) {
+        return (chk && typeof chk === 'object' && Object.prototype.toString.call(chk) !== '[object Array]') === true;
     }
 
     /**
@@ -61,7 +38,7 @@
             // Make sure the value is not in __proto__ or something like that
             if(b.hasOwnProperty(key)) {
                 // If they are both objects then merge recursively
-                if(type(a[key]) === 'object' && type(b[key]) === 'object') {
+                if(isObject(a[key]) && isObject(b[key])) {
                     merge(a[key], b[key]);
                 }
 
@@ -77,15 +54,30 @@
     }
 
     /**
-     * Returns a recursive clone of the passed object or array.
+     * Returns a recursive clone of the passed object.
      * So when you edit the original the clone will not change.
      * Used in prototypical inheritance.
+     * It will not clone arrays.
      *
-     * @param {Array|Object} orig The original array or object to clone.
-     * @return {Array|Object} The cloned version of orig that can be edited without changing the original.
+     * @param {Object} orig The original object to clone.
+     * @return {Object} The cloned version of orig that can be edited without changing the original.
      */
     function clone(orig) {
+        // Initialise variables
+        var cl = {}
+          , key;
 
+        // Loop over all values in the object
+        // If the value is an object then clone recursively
+        // Otherwise just copy the value
+        for(key in orig) {
+            if(orig.hasOwnProperty(key)) {
+                cl[key] = isObject(orig[key]) ? clone(orig[key]) : orig[key];
+            }
+        }
+
+        // Return the clone
+        return cl;
     }
 
     /**
@@ -110,7 +102,7 @@
 
     // Create a nice little namespace to expose
     var ns = {
-        type: type,
+        isObject: isObject,
         merge: merge,
         clone: clone,
         inherit: inherit
