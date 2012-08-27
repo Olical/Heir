@@ -129,6 +129,6 @@
         });
     }
     else {
-        exports.ns = ns;
+        exports.heir = ns;
     }
 }(this));
