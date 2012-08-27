@@ -55,5 +55,37 @@ describe('heir.isObject', function() {
     });
 });
 
+describe('heir.merge', function() {
+    it('copies in values that did not exist', function() {
+        var chk = heir.merge({foo:true}, {bar: true});
+        expect(chk).toEqual({foo:true, bar:true});
+    });
+
+    it('copies in values that did exist', function() {
+        var chk = heir.merge({foo:true, bar:true}, {foo:false});
+        expect(chk).toEqual({foo:false, bar:true});
+    });
+
+    it('merges objects recursively', function() {
+        var chk = heir.merge({
+            nest: {
+                foo: true,
+                bar: true
+            }
+        }, {
+            nest: {
+                bar: false
+            }
+        });
+
+        expect(chk).toEqual({
+            nest: {
+                foo: true,
+                bar: false
+            }
+        });
+    });
+});
+
 // Run Jasmine
 jasmineEnv.execute();
