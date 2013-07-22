@@ -4,7 +4,7 @@
  * MIT license
  */
 
-;(function(exports) {
+;(function(root) {
     // JSHint config - http://www.jshint.com/
     /*jshint laxcomma:true*/
     /*global define:true*/
@@ -128,7 +128,10 @@
             return ns;
         });
     }
+    else if (typeof module === 'object') {
+        module.exports = ns;
+    }
     else {
-        exports.heir = ns;
+        root.heir = ns;
     }
 }(this));
