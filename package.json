@@ -1,0 +1,16 @@
+{
+  "name": "Heir",
+  "version": "1.0.0",
+  "description": "Makes prototypical inheritance easy and robust",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "cdda6c959f3dad8d0cf2b6f63928bc6bfc263ed7"
+}
