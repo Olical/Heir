@@ -4,7 +4,7 @@
  * MIT license
  */
 
-;(function(root) {
+;(function () {
 	// JSHint config - http://www.jshint.com/
 	/*jshint laxcomma:true*/
 	/*global define:true*/
@@ -34,11 +34,11 @@
 	function merge(a, b) {
 		// Loop over all values in b. If they are not found in a then set them
 		// If both values are objects then recursively merge them
-		for(var key in b) {
+		for (var key in b) {
 			// Make sure the value is not in __proto__ or something like that
-			if(b.hasOwnProperty(key)) {
+			if (b.hasOwnProperty(key)) {
 				// If they are both objects then merge recursively
-				if(isObject(a[key]) && isObject(b[key])) {
+				if (isObject(a[key]) && isObject(b[key])) {
 					merge(a[key], b[key]);
 				}
 
@@ -64,14 +64,14 @@
 	 */
 	function clone(orig) {
 		// Initialise variables
-		var cl = {}
-		  , key;
+		var cl = {};
+		var key;
 
 		// Loop over all values in the object
 		// If the value is an object then clone recursively
 		// Otherwise just copy the value
-		for(key in orig) {
-			if(orig.hasOwnProperty(key)) {
+		for (key in orig) {
+			if (orig.hasOwnProperty(key)) {
 				cl[key] = isObject(orig[key]) ? clone(orig[key]) : orig[key];
 			}
 		}
@@ -89,15 +89,15 @@
 	 */
 	function inherit(parent, forceFn) {
 		// Initialise variables
-		var fn = forceFn || this
-		  , i;
+		var fn = forceFn || this;
+		var i;
 
 		// If the parent variable is not a function then it must be an array
 		// So we have to loop over it and inherit each of them
 		// Remember to pass the current function instance!
-		if(typeof parent !== 'function') {
+		if (typeof parent !== 'function') {
 			i = parent.length;
-			while(i--) {
+			while (i--) {
 				inherit(parent[i], fn);
 			}
 		}
@@ -123,15 +123,15 @@
 	};
 
 	// And expose everything else either via AMD or a global object
-	if(typeof define === 'function' && define.amd) {
-		define(function() {
+	if (typeof define === 'function' && define.amd) {
+		define(function () {
 			return ns;
 		});
 	}
-	else if (typeof module === 'object') {
+	else if (typeof module === 'object' && module.exports) {
 		module.exports = ns;
 	}
 	else {
-		root.heir = ns;
+		this.heir = ns;
 	}
-}(this));
+}.call(this));
