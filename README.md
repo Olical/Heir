@@ -4,34 +4,40 @@ This is a small script that adds the ability to inherit other functions prototyp
 
 Due to there not being any documentation yet, you may want to read my JSDoc comments in the source. They will tell you everything you need to know. Here is a quick example to get you going anyway.
 
-    // Create the base class
-    var Base = function(){};
-    
-    // Add a method
-    Base.prototype.foo = function() {
-        retrun '!foo!';
-    };
-    
-    // Create a sub class which inherits from base
-    var Sub = function(){}.inherit(Base);
-    
-    // Create an instance of Sub and call it's method
-    var s = new Sub();
-    s.foo(); // Returns "!foo!"
+```javascript
+// Create the base class
+var Base = function(){};
+
+// Add a method
+Base.prototype.foo = function() {
+	retrun '!foo!';
+};
+
+// Create a sub class which inherits from base
+var Sub = function(){}.inherit(Base);
+
+// Create an instance of Sub and call it's method
+var s = new Sub();
+s.foo(); // Returns "!foo!"
+```
 
 ## Cloning
 
 You can clone the repository with your generic clone commands as a standalone repository or submodule.
 
-    # Full repository
-    git clone git://github.com/Wolfy87/Heir.git
+```bash
+# Full repository
+git clone git://github.com/Wolfy87/Heir.git
 
-    # Or submodule
-    git submodule add git://github.com/Wolfy87/Heir.git assets/js/Heir
+# Or submodule
+git submodule add git://github.com/Wolfy87/Heir.git assets/js/Heir
+```
 
 If you wish to run the tests you will also need to fetch the required submodules. You can do that with the following command.
 
-    git submodule update --init
+```bash
+git submodule update --init
+```
 
 ## Testing
 
