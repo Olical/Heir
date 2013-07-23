@@ -4,12 +4,8 @@
  * MIT license
  */
 
-;(function () {
-	// JSHint config - http://www.jshint.com/
-	/*jshint laxcomma:true*/
-	/*global define:true*/
-
-	// Place the script into strict mode
+(function () {
+	/*global define,module*/
 	'use strict';
 
 	/**
