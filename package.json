@@ -1,8 +1,8 @@
 {
-  "name": "heir",
-  "version": "1.0.0",
-  "description": "Makes prototypical inheritance easy and robust",
-  "author": "",
-  "license": "MIT",
-  "readmeFilename": "README.md"
+	"name": "heir",
+	"version": "1.0.0",
+	"description": "Makes prototypical inheritance easy and robust",
+	"author": "",
+	"license": "MIT",
+	"readmeFilename": "README.md"
 }
