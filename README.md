@@ -21,27 +21,19 @@ var s = new Sub();
 s.foo(); // Returns "!foo!"
 ```
 
-## Cloning
+## Downloading
 
-You can clone the repository with your generic clone commands as a standalone repository or submodule.
+You can obtain a copy by cloning this repository with git, installing through [npm][] or [bower][]. Heir is called `heir` within both package managers.
 
-```bash
-# Full repository
-git clone git://github.com/Wolfy87/Heir.git
-
-# Or submodule
-git submodule add git://github.com/Wolfy87/Heir.git assets/js/Heir
-```
-
-If you wish to run the tests you will also need to fetch the required submodules. You can do that with the following command.
+If you wish to run the tests you will also need to install Jasmine. You can do this through bower like so.
 
 ```bash
-git submodule update --init
+bower install --dev
 ```
 
 ## Testing
 
-Tests are performed using Jasmine in the following browsers via [BrowserStack](http://www.browserstack.com/).
+Tests are performed using Jasmine in the following browsers.
 
  * Firefox
  * Chrome
@@ -62,3 +54,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[npm]: https://npmjs.org/
+[bower]: http://bower.io/
