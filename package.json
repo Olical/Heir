@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Makes prototypical inheritance easy and robust",
 	"license": "MIT",
+	"main": "heir.js",
 	"readmeFilename": "README.md"<
 	"bugs": {
 		"url": "https://github.com/Wolfy87/Heir/issues"
