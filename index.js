@@ -4,4 +4,4 @@
  * MIT license
  */
 
-module.exports = require('./src/heir');
+module.exports = require('./heir');
