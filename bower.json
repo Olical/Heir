@@ -22,5 +22,8 @@
 		"extend",
 		"inherit",
 		"oop"
-	]
+	],
+	"devDependencies": {
+		"jasmine": "1.3.1"
+	}
 }
