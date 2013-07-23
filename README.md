@@ -21,6 +21,8 @@ var s = new Sub();
 s.foo(); // Returns "!foo!"
 ```
 
+You can load this script into your browser using a normal script tag or AMD. You can also use node.js' `require` if you are running server side.
+
 ## Downloading
 
 You can obtain a copy by cloning this repository with git, installing through [npm][] or [bower][]. Heir is called `heir` within both package managers.
