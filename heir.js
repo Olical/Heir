@@ -25,6 +25,26 @@
 	}
 
 	/**
+	 * Works out if an object is an array
+	 *
+	 * @param {Mixed} chk The variable to check to see if it is an array
+	 * @return {Boolean} True if it is a true array, false if it is anything else
+	 */
+	function isArray(chk) {
+		return !!(chk && toString.call(chk) === '[object Array]');
+	}
+
+	/**
+	 * Works out if a variable is a function or not
+	 *
+	 * @param {Mixed} chk The variable to check to see if it is a function
+	 * @return {Boolean} True if it is a function, false if it is anything else
+	 */
+	function isFunction(chk) {
+		return typeof chk === 'function';
+	}
+
+	/**
 	 * Recursively merges two objects. Object `a` will be overridden by the values in object `b`.
 	 * Please run the values through a cloning function first, this function does not try to clone them for you.
 	 * The base object will be edited directly, please be careful!

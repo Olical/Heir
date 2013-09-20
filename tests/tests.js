@@ -59,6 +59,72 @@
 		});
 	});
 
+	describe('heir.isArray', function() {
+		it('returns true for array literals', function() {
+			expect(heir.isArray(['a', 'b', 'c'])).toBe(true);
+		});
+
+		it('returns true for array objects', function() {
+			expect(heir.isArray(new Array())).toBe(true);
+		});
+
+		it('return false for primitives', function() {
+			expect(heir.isArray(1)).toBe(false);
+			expect(heir.isArray(1.01)).toBe(false);
+			expect(heir.isArray('a')).toBe(false);
+			expect(heir.isArray(true)).toBe(false);
+			expect(heir.isArray(false)).toBe(false);
+		});
+
+		it('returns false for objects', function() {
+			expect(heir.isArray({})).toBe(false);
+		});
+
+		it('returns false for array-like objects', function() {
+			var args = (function() {
+				return arguments;
+			})(1, 2, 3);
+
+			expect(heir.isArray(args)).toBe(false);
+		});
+
+		it('returns false for functions', function() {
+			expect(heir.isArray(function(){})).toBe(false);
+		})
+	});
+
+	describe('heir.isArray', function() {
+
+		it('returns true for functions', function() {
+			expect(heir.isFunction(function(){})).toBe(true);
+		});
+
+		it('return false for primitives', function() {
+			expect(heir.isFunction(1)).toBe(false);
+			expect(heir.isFunction(1.01)).toBe(false);
+			expect(heir.isFunction('a')).toBe(false);
+			expect(heir.isFunction(true)).toBe(false);
+			expect(heir.isFunction(false)).toBe(false);
+		});
+
+		it('returns false for arrays', function() {
+			expect(heir.isFunction(['a', 'b', 'c'])).toBe(false);
+			expect(heir.isFunction(new Array())).toBe(false);
+		});
+
+		it('returns false for objects', function() {
+			expect(heir.isFunction({})).toBe(false);
+		});
+
+		it('returns false for array-like objects', function() {
+			var args = (function() {
+				return arguments;
+			})(1, 2, 3);
+
+			expect(heir.isFunction(args)).toBe(false);
+		});
+	});
+
 	describe('heir.merge', function() {
 		it('copies in values that did not exist', function() {
 			var chk = heir.merge({foo:true}, {bar: true});
