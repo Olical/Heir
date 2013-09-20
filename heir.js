@@ -9,13 +9,39 @@
 	'use strict';
 
 	/**
+	 * Get a shortcut for toString
+	 * @type {Function}
+	 */
+	var toString = Object.prototype.toString;
+
+	/**
 	 * Works out if a variable is a true object (created with {} etc) and not an array or anything else that usually shows up as an object.
 	 *
 	 * @param {Mixed} chk The variable to check to see if it is an object. It must be a pure object, not even a prototype.
 	 * @return {Boolean} True if it is a true object, false if it is anything else.
 	 */
 	function isObject(chk) {
-		return (chk && Object.prototype.toString.call(chk) === '[object Object]') === true;
+		return (chk && toString.call(chk) === '[object Object]') === true;
+	}
+
+	/**
+	 * Works out if an object is an array
+	 *
+	 * @param {Mixed} chk The variable to check to see if it is an array
+	 * @return {Boolean} True if it is a true array, false if it is anything else
+	 */
+	function isArray(chk) {
+		return !!(chk && toString.call(chk) === '[object Array]');
+	}
+
+	/**
+	 * Works out if a variable is a function or not
+	 *
+	 * @param {Mixed} chk The variable to check to see if it is a function
+	 * @return {Boolean} True if it is a function, false if it is anything else
+	 */
+	function isFunction(chk) {
+		return typeof chk === 'function';
 	}
 
 	/**
@@ -91,16 +117,21 @@
 		// If the parent variable is not a function then it must be an array
 		// So we have to loop over it and inherit each of them
 		// Remember to pass the current function instance!
-		if (typeof parent !== 'function') {
+		if (isArray(parent)) {
 			i = parent.length;
 			while (i--) {
 				inherit(parent[i], fn);
 			}
-		}
-		else {
-			// It is not an array, it is a plain function
-			// Merge it's prototype into this one
-			merge(fn.prototype, clone(parent.prototype));
+		} else {
+
+			// Make sure we're using prototypes if we should be
+			var realParent = isFunction(parent) ?
+				parent.prototype : parent;
+
+			var realFn = isFunction(fn) ?
+				fn.prototype : fn;
+
+			merge(realFn, clone(realParent));
 		}
 
 		// Return the current function to allow chaining
@@ -113,6 +144,8 @@
 	// Create a nice little namespace to expose
 	var ns = {
 		isObject: isObject,
+		isArray: isArray,
+		isFunction: isFunction,
 		merge: merge,
 		clone: clone,
 		inherit: inherit
