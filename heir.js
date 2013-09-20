@@ -9,13 +9,19 @@
 	'use strict';
 
 	/**
+	 * Get a shortcut for toString
+	 * @type {Function}
+	 */
+	var toString = Object.prototype.toString;
+
+	/**
 	 * Works out if a variable is a true object (created with {} etc) and not an array or anything else that usually shows up as an object.
 	 *
 	 * @param {Mixed} chk The variable to check to see if it is an object. It must be a pure object, not even a prototype.
 	 * @return {Boolean} True if it is a true object, false if it is anything else.
 	 */
 	function isObject(chk) {
-		return (chk && Object.prototype.toString.call(chk) === '[object Object]') === true;
+		return (chk && toString.call(chk) === '[object Object]') === true;
 	}
 
 	/**
