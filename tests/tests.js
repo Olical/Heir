@@ -305,6 +305,19 @@
 			expect(s.bar()).toEqual('!bar!');
 			expect(s.baz()).toEqual('!baz!');
 		});
+
+		it('works with objects as the child', function() {
+			var Base = function() {};
+			Base.prototype.foo = function() {
+				return '!foo!';
+			};
+
+			var sub = {};
+
+			heir.inherit(Base, sub);
+
+			expect(sub.foo()).toEqual('!foo!');
+		});
 	});
 
 	// Run Jasmine

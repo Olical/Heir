@@ -117,16 +117,21 @@
 		// If the parent variable is not a function then it must be an array
 		// So we have to loop over it and inherit each of them
 		// Remember to pass the current function instance!
-		if (typeof parent !== 'function') {
+		if (isArray(parent)) {
 			i = parent.length;
 			while (i--) {
 				inherit(parent[i], fn);
 			}
-		}
-		else {
-			// It is not an array, it is a plain function
-			// Merge it's prototype into this one
-			merge(fn.prototype, clone(parent.prototype));
+		} else {
+
+			// Make sure we're using prototypes if we should be
+			var realParent = isFunction(parent) ?
+				parent.prototype : parent;
+
+			var realFn = isFunction(fn) ?
+				fn.prototype : fn;
+
+			merge(realFn, clone(realParent));
 		}
 
 		// Return the current function to allow chaining
@@ -139,6 +144,8 @@
 	// Create a nice little namespace to expose
 	var ns = {
 		isObject: isObject,
+		isArray: isArray,
+		isFunction: isFunction,
 		merge: merge,
 		clone: clone,
 		inherit: inherit
