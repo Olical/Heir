@@ -5,20 +5,29 @@ This is a small script that adds the ability to inherit other functions prototyp
 Due to there not being any documentation yet, you may want to read my JSDoc comments in the source. They will tell you everything you need to know. Here is a quick example to get you going anyway.
 
 ```javascript
-// Create the base class
-var Base = function(){};
+// Create the base class.
+function Base() {}
 
-// Add a method
-Base.prototype.foo = function() {
-	retrun '!foo!';
+// Add a method.
+Base.prototype.foo = function () {
+	return 'Base#foo';
 };
 
-// Create a sub class which inherits from base
-var Sub = function(){}.inherit(Base);
+// Create a sub class which inherits from base.
+function Sub() {}
+heir.inherit(Sub, Base);
 
-// Create an instance of Sub and call it's method
+// Change the original method.
+Sub.prototype.foo = function () {
+	return [
+		'Sub#foo',
+		this.super.foo()
+	].join(', ');
+};
+
+// Create an instance of Sub and call it's method.
 var s = new Sub();
-s.foo(); // Returns "!foo!"
+s.foo(); // Returns "Sub#foo, Base#foo"
 ```
 
 You can load this script into your browser using a normal script tag or AMD. You can also use node.js' `require` if you are running server side.
