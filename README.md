@@ -54,7 +54,7 @@ Tests are performed using Jasmine in the following browsers.
 
 When testing in the more modern browsers, not Internet Explorer basically, I run it through the very early versions, some midrange versions and the very latest ones too. I don't just do the latest version.
 
-Heir will always be tested and working perfectly in all of them before a release. I will not release anything I think is riddled with bugs. However, if you do spot one, please [submit it as an issue](https://github.com/Wolfy87/Heir/issues) and I will get right on it.
+Heir will always be tested and working perfectly in all of them before a release. I will not release anything I think is riddled with bugs. However, if you do spot one, please [submit it as an issue][issues] and I will get right on it.
 
 ## License (MIT)
 
@@ -68,3 +68,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [npm]: https://npmjs.org/
 [bower]: http://bower.io/
+[issues]: https://github.com/Wolfy87/Heir/issues
