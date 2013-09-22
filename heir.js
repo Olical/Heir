@@ -36,6 +36,29 @@
 			var Host = function () {};
 			Host.prototype = source;
 			return new Host();
+		},
+
+		/**
+		 * Mixes the specified object into your class. This can be used to add
+		 * certain capabilities and helper methods to a class that is already
+		 * inheriting from some other class. You can mix in as many object as
+		 * you want, but only inherit from one.
+		 *
+		 * These values are mixed into the actual prototype object of your
+		 * class, they are not added to the prototype chain like inherit.
+		 *
+		 * @param {Function} destination Class to mix the object into.
+		 * @param {Object} source Object to mix into the class.
+		 */
+		mixin: function mixin(destination, source) {
+			var key;
+			var destinationPrototype = destination.prototype;
+
+			for (key in source) {
+				if (source.hasOwnProperty(key)) {
+					destinationPrototype[key] = source[key];
+				}
+			}
 		}
 	};
 
