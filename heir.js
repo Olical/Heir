@@ -51,14 +51,37 @@
 		 * @param {Object} source Object to mix into the class.
 		 */
 		mixin: function mixin(destination, source) {
+			return heir.merge(destination.prototype, source);
+		},
+
+		/**
+		 * This function merges a source into a destination.
+		 *
+		 * @param {Object} destination The destination for the merge
+		 * @param {Object} source	  The source of the properties to merge
+		 */
+		merge: function merge(destination, source) {
 			var key;
-			var destinationPrototype = destination.prototype;
 
 			for (key in source) {
-				if (source.hasOwnProperty(key)) {
-					destinationPrototype[key] = source[key];
+				if (heir.hasOwn(source, key)) {
+					destination[key] = source;
 				}
 			}
+		},
+
+		/**
+		 * Shortcut for Object.prototype.hasOwnProperty.
+		 *
+		 * We should use Object.prototype.hasOwnPropety rather than
+		 * object.hasOwnProperty as it could be overwritten. 
+		 * 
+		 * @param  {Object}		 object The object to check
+		 * @param  {String|Number}  key	The key to check for.
+		 * @return {Boolean}			   Does object have key as an own propety?
+		 */
+		hasOwn: function hasOwn(object, key) {
+			return Object.prototype.hasOwnProperty.call(object, key);
 		}
 	};
 
