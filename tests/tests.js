@@ -73,6 +73,21 @@
 			expect(source.foo()).toBe('Source#foo');
 			expect(destination.foo()).toBe('Destination#foo, Source#foo');
 		});
+
+		it('is correct in the eyes of instanceof', function () {
+			var Source = function () {};
+			var Destination = function () {};
+			heir.inherit(Destination, Source);
+
+			var source = new Source();
+			var destination = new Destination();
+
+			expect(source instanceof Source).toBe(true);
+			expect(source instanceof Destination).toBe(false);
+
+			expect(destination instanceof Source).toBe(true);
+			expect(destination instanceof Destination).toBe(true);
+		});
 	});
 
 	describe('heir.mixin', function () {
