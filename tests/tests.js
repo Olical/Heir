@@ -128,5 +128,17 @@
 		});
 	});
 
+	describe('heir.merge', function () {
+		it('merges one object into another', function () {
+			var a = {foo:true};
+			var b = {bar:true};
+			heir.merge(a, b);
+
+			expect(a.foo).toBe(true);
+			expect(a.bar).toBe(true);
+			expect(b.foo).toBeUndefined();
+		});
+	});
+
 	jasmineEnv.execute();
 }.call(this));

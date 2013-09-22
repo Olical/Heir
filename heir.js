@@ -65,7 +65,7 @@
 
 			for (key in source) {
 				if (heir.hasOwn(source, key)) {
-					destination[key] = source;
+					destination[key] = source[key];
 				}
 			}
 		},
