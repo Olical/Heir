@@ -36,6 +36,14 @@ s.foo(); // Returns "Sub#foo, Base#foo"
 
 You can load this script into your browser using a normal script tag or AMD. You can also use node.js' `require` if you are running server side.
 
+## Changes from v1
+
+The `inherit` method used to work by cloning and merging multiple prototypes into one. This meant things like `instanceof` didn't work and you could get into some weird scenarios [caused by multiple inheritance][mi].
+
+The new `inherit` uses the built in prototypical inheritance to provide a much cleaner outcome, as shown in [this post about prototypical inheritance][pi]. The major change is that you can't inherit from multiple classes any more.
+
+If you still need to have multiple things shared between classes to avoid duplication, you can now use the `mixin` method to merge objects into your inheritance hierarchies where required.
+
 ## Downloading
 
 You can obtain a copy by cloning this repository with git, installing through [npm][] or [bower][]. Heir is called `heir` within both package managers.
@@ -73,3 +81,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [npm]: https://npmjs.org/
 [bower]: http://bower.io/
 [issues]: https://github.com/Wolfy87/Heir/issues
+[mi]: http://stackoverflow.com/questions/225929/what-is-the-exact-problem-with-multiple-inheritance
+[pi]: http://oli.me.uk/2013/06/01/prototypical-inheritance-done-right/
