@@ -25,7 +25,7 @@ heir.mixin(Sub, pooling);
 Sub.prototype.foo = function () {
 	return [
 		'Sub#foo',
-		this.super.foo.call(this)
+		this._super.foo.call(this)
 	].join(', ');
 };
 

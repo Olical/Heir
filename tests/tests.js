@@ -89,24 +89,24 @@
 			expect(destination instanceof Destination).toBe(true);
 		});
 
-		it('has a reference to the parent in this.super', function () {
+		it('has a reference to the parent in this._super', function () {
 			var Source = function () {};
 			var Destination = function () {};
 			heir.inherit(Destination, Source);
 
 			var result = new Destination();
 
-			expect(result.super).toBe(Source.prototype);
+			expect(result._super).toBe(Source.prototype);
 		});
 
-		it('can have the addition of this.super disabled', function () {
+		it('can have the addition of this._super disabled', function () {
 			var Source = function () {};
 			var Destination = function () {};
 			heir.inherit(Destination, Source, false);
 
 			var result = new Destination();
 
-			expect(result.super).toBeUndefined();
+			expect(result._super).toBeUndefined();
 		});
 	});
 
