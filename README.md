@@ -10,7 +10,7 @@ var Base = function(){};
 
 // Add a method
 Base.prototype.foo = function() {
-	retrun '!foo!';
+	return '!foo!';
 };
 
 // Create a sub class which inherits from base
