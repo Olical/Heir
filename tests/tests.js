@@ -98,6 +98,16 @@
 
 			expect(result.super).toBe(Source.prototype);
 		});
+
+		it('can have the addition of this.super disabled', function () {
+			var Source = function () {};
+			var Destination = function () {};
+			heir.inherit(Destination, Source, false);
+
+			var result = new Destination();
+
+			expect(result.super).toBeUndefined();
+		});
 	});
 
 	describe('heir.mixin', function () {
