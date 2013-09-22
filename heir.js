@@ -32,7 +32,7 @@
 		 * @param {Object} source Method to insert into the new object's prototype.
 		 * @return {Object} An empty object with the source object in it's prototype chain.
 		 */
-		createObject: function createObject(source) {
+		createObject: Object.create || function createObject(source) {
 			var Host = function () {};
 			Host.prototype = source;
 			return new Host();
