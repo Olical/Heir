@@ -58,7 +58,7 @@
 		 * This function merges a source into a destination.
 		 *
 		 * @param {Object} destination The destination for the merge
-		 * @param {Object} source	  The source of the properties to merge
+		 * @param {Object} source      The source of the properties to merge
 		 */
 		merge: function merge(destination, source) {
 			var key;
@@ -76,9 +76,9 @@
 		 * We should use Object.prototype.hasOwnPropety rather than
 		 * object.hasOwnProperty as it could be overwritten. 
 		 * 
-		 * @param  {Object}		 object The object to check
+		 * @param  {Object}         object The object to check
 		 * @param  {String|Number}  key	The key to check for.
-		 * @return {Boolean}			   Does object have key as an own propety?
+		 * @return {Boolean}        Does object have key as an own propety?
 		 */
 		hasOwn: function hasOwn(object, key) {
 			return Object.prototype.hasOwnProperty.call(object, key);
