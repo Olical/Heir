@@ -36,6 +36,43 @@
 	});
 
 	describe('heir.inherit', function () {
+		it('causes a class to inherit a method', function () {
+			var Source = function () {};
+			Source.prototype.foo = function () {};
+
+			var Destination = function () {};
+			heir.inherit(Destination, Source);
+			Destination.prototype.bar = function() {};
+
+			var result = new Destination();
+
+			expect(Destination.prototype.hasOwnProperty('foo')).toBe(false);
+			expect(Destination.prototype.hasOwnProperty('bar')).toBe(true);
+			expect(result.foo).toBeDefined();
+			expect(result.bar).toBeDefined();
+		});
+
+		it('can have methods overridden', function () {
+			var Source = function () {};
+			Source.prototype.foo = function () {
+				return 'Source#foo';
+			};
+
+			var Destination = function () {};
+			heir.inherit(Destination, Source);
+			Destination.prototype.foo = function() {
+				return [
+					'Destination#foo',
+					Source.prototype.foo.call(this)
+				].join(', ');
+			};
+
+			var source = new Source();
+			var destination = new Destination();
+
+			expect(source.foo()).toBe('Source#foo');
+			expect(destination.foo()).toBe('Destination#foo, Source#foo');
+		});
 	});
 
 	jasmineEnv.execute();
