@@ -21,8 +21,9 @@
 		 * @param {Function} source Class to inherit from.
 		 */
 		inherit: function inherit(destination, source) {
-			destination.prototype = heir.createObject(source.prototype);
-			destination.prototype.constructor = destination;
+			var proto = destination.prototype = heir.createObject(source.prototype);
+			proto.constructor = destination;
+			proto.super = source.prototype;
 		},
 
 		/**

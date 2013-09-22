@@ -88,6 +88,16 @@
 			expect(destination instanceof Source).toBe(true);
 			expect(destination instanceof Destination).toBe(true);
 		});
+
+		it('has a reference to the parent in this.super', function () {
+			var Source = function () {};
+			var Destination = function () {};
+			heir.inherit(Destination, Source);
+
+			var result = new Destination();
+
+			expect(result.super).toBe(Source.prototype);
+		});
 	});
 
 	describe('heir.mixin', function () {
