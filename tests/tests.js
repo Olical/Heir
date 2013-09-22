@@ -107,5 +107,26 @@
 		});
 	});
 
+	describe('heir.hasOwn', function () {
+		it('returns true when it is it\'s own', function () {
+			var source = {
+				foo: true
+			};
+
+			expect(heir.hasOwn(source, 'foo')).toBe(true);
+		});
+
+		it('returns false when it is either undefined or up the prototype chain', function () {
+			var noProperty = {};
+			var inChain = heir.createObject({
+				foo: true
+			});
+
+			expect(heir.hasOwn(noProperty, 'foo')).toBe(false);
+			expect(inChain.foo).toBeDefined();
+			expect(heir.hasOwn(inChain, 'foo')).toBe(false);
+		});
+	});
+
 	jasmineEnv.execute();
 }.call(this));
