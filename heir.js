@@ -4,7 +4,15 @@
  * MIT license
  */
 
-(function () {
+(function (name, root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(factory);
+	} else if (typeof exports === 'object') {
+		module.exports = factory();
+	} else {
+		root[name] = factory();
+	}
+}('heir', this, function () {
 	/*global define,module*/
 	'use strict';
 
@@ -86,13 +94,5 @@
 		}
 	};
 
-	if (typeof define === 'function' && define.amd) {
-		define(heir);
-	}
-	else if (typeof module === 'object' && module.exports) {
-		module.exports = heir;
-	}
-	else {
-		this.heir = heir;
-	}
-}.call(this));
+	return heir;
+}));
