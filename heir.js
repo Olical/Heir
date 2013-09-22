@@ -7,9 +7,11 @@
 (function (name, root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(factory);
-	} else if (typeof exports === 'object') {
+	}
+	else if (typeof exports === 'object') {
 		module.exports = factory();
-	} else {
+	}
+	else {
 		root[name] = factory();
 	}
 }('heir', this, function () {
