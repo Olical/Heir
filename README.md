@@ -17,6 +17,10 @@ Base.prototype.foo = function () {
 function Sub() {}
 heir.inherit(Sub, Base);
 
+// Mix in some functionality enhancing objects.
+heir.mixin(Sub, events);
+heir.mixin(Sub, pooling);
+
 // Change the original method.
 Sub.prototype.foo = function () {
 	return [
