@@ -75,5 +75,22 @@
 		});
 	});
 
+	describe('heir.mixin', function () {
+		it('can mix methods into a class', function () {
+			var source = {
+				foo: function () {},
+				bar: function () {}
+			};
+			var Destination = function () {};
+			heir.mixin(Destination, source);
+			var result = new Destination();
+
+			expect(result.foo).toBeDefined();
+			expect(result.bar).toBeDefined();
+			expect(Destination.prototype.hasOwnProperty('foo')).toBe(true);
+			expect(Destination.prototype.hasOwnProperty('bar')).toBe(true);
+		});
+	});
+
 	jasmineEnv.execute();
 }.call(this));
