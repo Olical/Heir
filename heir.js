@@ -1,5 +1,5 @@
 /**
- * Heir v1.0.1 - http://git.io/F87mKg
+ * Heir v2.0.0 - http://git.io/F87mKg
  * Oliver Caldwell
  * MIT license
  */
@@ -29,14 +29,14 @@
 		 *
 		 * @param {Function} destination The target class for the inheritance.
 		 * @param {Function} source Class to inherit from.
-		 * @param {Boolean} addSuper Should we add the super property to the prototype? Defaults to true.
+		 * @param {Boolean} addSuper Should we add the _super property to the prototype? Defaults to true.
 		 */
 		inherit: function inherit(destination, source, addSuper) {
 			var proto = destination.prototype = heir.createObject(source.prototype);
 			proto.constructor = destination;
 			
 			if (addSuper || typeof addSuper === 'undefined') {
-				proto.super = source.prototype;
+				proto._super = source.prototype;
 			}
 		},
 
