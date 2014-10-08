@@ -36,7 +36,7 @@
 			proto.constructor = destination;
 			
 			if (addSuper || typeof addSuper === 'undefined') {
-				proto._super = source.prototype;
+				destination._super = source.prototype;
 			}
 		},
 

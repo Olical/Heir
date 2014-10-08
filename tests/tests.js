@@ -89,14 +89,14 @@
 			expect(destination instanceof Destination).toBe(true);
 		});
 
-		it('has a reference to the parent in this._super', function () {
+		it('has a reference to the parent in Destination._super', function () {
 			var Source = function () {};
 			var Destination = function () {};
 			heir.inherit(Destination, Source);
 
 			var result = new Destination();
 
-			expect(result._super).toBe(Source.prototype);
+			expect(Destination._super).toBe(Source.prototype);
 		});
 
 		it('can have the addition of this._super disabled', function () {
