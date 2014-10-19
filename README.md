@@ -10,7 +10,7 @@ function Base() {}
 
 // Add a method.
 Base.prototype.foo = function () {
-	return 'Base#foo';
+    return 'Base#foo';
 };
 
 // Create a sub class which inherits from base.
@@ -23,10 +23,10 @@ heir.mixin(Sub, pooling);
 
 // Change the original method.
 Sub.prototype.foo = function () {
-	return [
-		'Sub#foo',
-		this._super.foo.call(this)
-	].join(', ');
+    return [
+        'Sub#foo',
+        this._super.foo.call(this)
+    ].join(', ');
 };
 
 // Create an instance of Sub and call it's method.
