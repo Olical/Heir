@@ -1,6 +1,6 @@
 {
     "name": "heir",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "Makes prototypical inheritance easy and robust",
     "license": "MIT",
     "main": "heir.js",

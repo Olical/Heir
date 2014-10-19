@@ -1,5 +1,5 @@
 /**
- * Heir v2.0.0 - http://git.io/F87mKg
+ * Heir v3.0.0 - http://git.io/F87mKg
  * Oliver Caldwell
  * MIT license
  */
