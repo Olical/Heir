@@ -44,6 +44,10 @@ The new `inherit` uses the built in prototypical inheritance to provide a much c
 
 If you still need to have multiple things shared between classes to avoid duplication, you can now use the `mixin` method to merge objects into your inheritance hierarchies where required.
 
+## Changes from v2
+
+The concept of `_super` now works better, but in a completely different way. Thanks to @vejersele in issue #9.
+
 ## Downloading
 
 You can obtain a copy by cloning this repository with git, installing through [npm][] or [bower][]. Heir is called `heir` within both package managers.
