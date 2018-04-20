@@ -2,7 +2,7 @@
 
 Helper functions for prototypical inheritance in JavaScript.
 
-Use the source code and JSDoc comments as documentation, here's a quick example to overview the API though.
+Use the source code and JSDoc comments as documentation, here's a quick example to get you started.
 
 ```javascript
 const heir = require('heir')
