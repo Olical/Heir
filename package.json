@@ -1,31 +1,42 @@
 {
-    "name": "heir",
-    "version": "3.0.0",
-    "description": "Makes prototypical inheritance easy and robust",
-    "license": "Unlicense",
-    "main": "heir.js",
-    "readmeFilename": "README.md",
-    "bugs": {
-        "url": "https://github.com/Wolfy87/Heir/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/Wolfy87/Heir.git"
-    },
-    "directories": {
-        "test": "tests"
-    },
-    "keywords": [
-        "prototype",
-        "inheritance",
-        "class",
-        "extend",
-        "inherit",
-        "oop"
-    ],
-    "author": {
-        "name": "Oliver Caldwell",
-        "email": "olliec87@gmail.com",
-        "url": "http://oli.me.uk/"
-    }
+  "name": "heir",
+  "version": "4.0.0",
+  "description": "Helper functions for prototypical inheritance",
+  "license": "Unlicense",
+  "main": "heir.js",
+  "scripts": {
+    "prepublish": "npm run lint && npm run test",
+    "lint": "standard",
+    "test": "tape tests.js | faucet"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Olical/Heir/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Olical/Heir.git"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [
+    "prototype",
+    "inheritance",
+    "class",
+    "extend",
+    "inherit",
+    "oop"
+  ],
+  "author": {
+    "name": "Oliver Caldwell",
+    "email": "olliec87@gmail.com",
+    "url": "https://oli.me.uk/"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "faucet": "^0.0.1",
+    "standard": "^11.0.1",
+    "tape": "^4.9.0"
+  }
 }
